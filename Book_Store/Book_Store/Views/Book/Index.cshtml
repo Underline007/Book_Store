@@ -1,0 +1,48 @@
+﻿
+@{
+    Layout = "Homepage";
+}
+@model List<Book>
+
+<div class="main">
+    <div class="content">
+        <!-- Begin New Product -->
+        <div class="content_top">
+            <div class="heading">
+                <h3>Books In Store</h3>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- Product -->
+        <div class="all product" style="margin-left: 140px;margin-right: 80px;">
+            @foreach (var b in Model)
+            {
+                <div class="section group" >
+                    <div  class="grid_1_of_4 images_1_of_4">
+                        <a asp-controller="Book" asp-action="Detail" asp-route-id="@b.Id">
+                            <img src="@b.BPicture" width="200" height="200">
+                        </a>
+                        <br>
+                        <br>
+                        <h2 style="font-family: 'Times New Roman', Times, serif;">@b.BName</h2>
+                        <div class="price-details">
+                            <br>
+                            <div class="price-number">
+                                <p><span style="font-family: 'Times New Roman', Times, serif;color:red;font-size:16px;font-family:cursive;"  class="rupees">Price: $@b.BPrice</span></p>
+                                <br>
+                                <p><span style="font-family: 'Times New Roman', Times, serif;color:black;font-size:16px;font-family:cursive;" class="rupees">Quantity: @b.BQuantity</span></p>
+                                @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
+                                {
+                                    <a asp-controller="Book" asp-action="Detail" asp-route-id="@b.Id">
+                                        <button type="button" class="btn btn-outline-info">Add to cart</button>
+                                    </a>
+                                }
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

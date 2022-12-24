@@ -1,0 +1,31 @@
+﻿
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+{
+
+
+   <br />
+    <div class="text-alige" style="text-align: center">
+        <img src="https://weone.vn/wp-content/uploads/2022/01/quy-trinh-quan-ly-thu-vien-cho-doanh-nghiep-1.png" width="850" height="650" />
+    </div>
+}
+
+else if (User.Identity.IsAuthenticated && User.IsInRole("storeOwner"))
+{
+    <br />
+   
+    <br />
+    <div class="text-alige" style="text-align: center">
+        <img src="https://weone.vn/wp-content/uploads/2022/01/quy-trinh-quan-ly-thu-vien-cho-doanh-nghiep-2.png" width="850" height="650" />
+    </div>
+}
+else{
+    <div class="text-alige" style="text-align: center">
+        <a class="text-muted container text-agile">Required StoreOwner account or Admin account to proceed with store management</a>
+    </div>
+    <br />
+    <hr />
+    <div class="text-alige" style="text-align: center">
+        <img src="https://eac0c7d1-a-62cb3a1a-s-sites.googlegroups.com/site/repaircorruptaccdbandmdbfiles/blogs/howtofixmsaccesserror2554cantfindthedatabaseyouspecified/mainbanner.png?attachauth=ANoY7cqxfT610gaeJ_-QLRlSVOfp5LlzfmZGtnt9wZc7qdO3XdBjLo00qdAH9y9p87PXDkZd9MZhjkIHnzfd-rO9UTwcKWua4476BCpgE0QYyO2aYE43fpqN74akHOJf_kmSLwWBh2UKSqkuBfWewqYq-nzBbrw6NguVWqu8jAqr65CsaERAeoi0xS3clB2uSq63OyxOegyfp8t8BlUEIRafg72QUMhSe9ZsQsquZ9bHooEiDqVgOdBzLDQhQbLYsi_fVl51UZpBTHlNTltWpF_V2fqYsgoKKuQlnbsUWGQDNr4iDOuqSofp8wBvk1mulgI7wIeZn101&attredirects=0" width="850" height="650" />
+    </div>
+}

@@ -1,0 +1,369 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/Homepage.css">
+    <script src="https://kit.fontawesome.com/1e27f03b11.js" crossorigin="anonymous"></script>
+    @*    <link rel="icon" href="images/mixifavicion.png" type="" sizes="30x30">*@
+    <title>Book Store</title>
+</head>
+<style>
+    .header {
+        position: relative;
+        width: 100%;
+        z-index: 10;
+        background-color: antiquewhite;
+        .icon
+
+    {
+        margin: 70px 100px 10px 10px;
+    }
+
+    .header_search {
+        margin-top: 40px;
+    }
+
+    .button-Asc {
+        margin: 65px 10px;
+    }
+
+    .button-Des {
+        margin: 65px 50px 10px 10px;
+    }
+
+    .logo {
+        margin-top: 65px;
+        /*      text-align: center;*/
+    }
+
+    div {
+        display: block;
+        position: relative;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .main_nav {
+        width: 100%;
+        border-top: solid 1px #f2f2f2;
+        box-shadow: 0px 5px 20px rgb(0 0 0 / 10%);
+        background: #FFFFFF;
+        font-family: inherit;
+        font-size: 18px;
+    }
+
+    a, a:hover, a:visited, a:active, a:link {
+        text-decoration: none;
+        -webkit-font-smoothing: antialiased;
+        color: black;
+        font-family: cursive;
+        -webkit-text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+        text-shadow: rgb(0 0 0 / 1%) 0 0 1px;
+    }
+
+    .content_top .heading h3 {
+        margin-left: 8%;
+        margin-top: 2%;
+        font-family: cursive;
+        font-size: 23px;
+    }
+
+    .footer .aboutus p, .footer .support p, .footer .listproduct ul, .footer .information ul {
+        margin-top: 30px;
+        font-family: cursive;
+        font-size: 1.1rem;
+    }
+
+    h3 {
+        font-family: cursive;
+        font-size: 1.5rem;
+    }
+
+    .top_bar {
+        width: 100%;
+        height: 56px;
+        background: #eca0b5;
+        border-bottom: solid 1px rgba(0, 0, 0, 0.05);
+        z-index: 2;
+    }
+
+    .footer {
+        clear: both;
+        padding-top: 25px;
+        padding-bottom: 320px;
+        border-top: 1px solid rgb(8, 158, 245);
+        box-sizing: border-box;
+        background: #eca0b5;
+    }
+
+    .section .grid_1_of_4 {
+        width: calc(20%- 5px);
+        float: left;
+        margin: 7px;
+        border: 1px solid #a89a9a;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+</style>
+<header>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    <div class="super_container">
+        <!-- Header -->
+        <header class="header">
+            <!-- Top Bar -->
+            <div class="container">
+                <div style="margin-bottom: 50px;" class="row">
+                    <div  class="col d-flex flex-row">
+                        <div style="width: 149px;" class="top_bar_contact_item">
+                            <div class="top_bar_icon">
+                                <img style="height: 80px; width: 111px;"  src="https://i.pinimg.com/564x/95/f8/58/95f8588d6469a16271ea2d2fad419d00.jpg"
+                                     alt="">
+                            </div>
+                            
+                        </div>
+                        
+
+
+                        @*them*@
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
+                        {
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <div class="top_bar_content ml-auto">
+                                    <div class="top_bar_user">
+                                        <div class="nav-item-login">
+                                            <a class="nav-link text-dark" asp-controller="Book" asp-action="Index" title="Manage">Welcome @User.Identity.Name!</a>
+                                        </div>
+                                        <div class="icon">
+                                            <div class="col-md-4 col-md-push-4">
+                                                <a class="" asp-controller="Order" asp-action="List">
+                                                    <i class="fa-solid fa-cart-shopping" style="font-size: 26px"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="nav-item-login">
+                                            <form class="form-inline nav-link text-dark" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Book", new { area = "" })">
+                                                <button type="submit" class="nav-link btn btn-link text-dark">
+                                                    Logout
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+                        }
+                         else if (User.Identity.IsAuthenticated && User.IsInRole("storeOwner"))
+                        {
+                             @if (SignInManager.IsSignedIn(User))
+                            {
+                                <div class="top_bar_content ml-auto">
+                                    <div class="top_bar_user">
+                                        <div class="nav-item-login">
+                                            <a class="nav-link text-dark" asp-controller="Book" asp-action="Index" title="Manage">Welcome @User.Identity.Name!</a>
+                                        </div>
+                                        <div class="icon">
+                                            <div class="col-md-4 col-md-push-4">
+                                                <a class="" asp-controller="Order" asp-action="List">
+                                                    <i class="fa-solid fa-cart-shopping" style="font-size: 26px"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="nav-item-login">
+                                            <form class="form-inline nav-link text-dark" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Book", new { area = "" })">
+                                                <button type="submit" class="nav-link btn btn-link text-dark">
+                                                    Logout
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="nav-item-login">
+                                            <a class="nav-link text-dark" asp-controller="Book" asp-action="StoreOwner">Go To Store Owner</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+                        {
+                             @if (SignInManager.IsSignedIn(User))
+                            {
+                                <div class="top_bar_content ml-auto">
+                                    <div class="top_bar_user">
+                                        <div class="nav-item-login">
+                                            <a class="nav-link text-dark" asp-controller="Book" asp-action="Index" title="Manage">Welcome @User.Identity.Name!</a>
+                                        </div>
+                                        <div class="icon">
+                                            <div class="col-md-4 col-md-push-4">
+                                                <a class="" asp-controller="Order" asp-action="List">
+                                                    <i class="fa-solid fa-cart-shopping" style="font-size: 26px"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="nav-item-login">
+                                            <form class="form-inline nav-link text-dark" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Book", new { area = "" })">
+                                                <button type="submit" class="nav-link btn btn-link text-dark">
+                                                    Logout
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="nav-item-login">
+                                            <a class="nav-link text-dark" asp-controller="Admin" asp-action="Index">Admin Page</a>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="top_bar_content ml-auto">
+                                <div class="top_bar_user">
+                                    <div class="user_icon">
+                                        <i class="fa-solid fa-question"></i>
+                                    </div>
+                                    <div><a asp-controller="Book" asp-action="Help">Help</a></div>
+                                </div>
+                                <div class="top_bar_user">
+                                    <div class="user_icon">
+                                        <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918647/user.svg"
+                                         alt="">
+                                    </div>
+                                    <div><a asp-area="Identity" asp-page="/Account/Login">Login</a></div>
+                                </div>
+                                <div class="top_bar_user">
+                                    <div class="user_icon">
+                                        <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918647/user.svg"
+                                         alt="">
+                                    </div>
+                                    <div><a asp-area="Identity" asp-page="/Account/Register">Register</a></div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+    </div> <!-- Header Main -->
+    <div class="header_main">
+        <div class="container">
+            <div class="row">
+                <!-- Logo -->
+                @* <div class="col-lg-2 col-sm-3 col-3 order-1">*@
+                @*<div class="col d-flex flex-row">*@
+                <div style="margin-right: 60px" class="col-md-3 col-md-offset-3">
+                    <div class="Logo">
+                        <a asp-controller="Book" asp-action="Index">
+                            <img  class="d-block w-100" src="https://cdn.discordapp.com/attachments/1012390893107552378/1055096219619315782/logo.jpg?fbclid=IwAR2FU81utZXi0e9xk8bgf8aRkxzcqebz_ZZIfXKzEekRyprbu4NX4hItKhw" width="650px">
+                        </a>
+                    </div>
+                </div>
+                <br>
+                <!-- Search -->
+                <div class="col-lg-4 col-2 text-lg-left">
+                    <h3>DTD Book - The largest bookstore in Vietnam</h3>
+                </div>
+                <div>
+                    <div style="padding: 80px" class="header_search">
+                        <div class="header_search_content">
+                            <div class="header_search_form_container">
+                                <form asp-controller="Book" asp-action="Search" class="header_search_form clearfix" method="POST">
+
+                                    <input style="width: 300px" type="search" class="header_search_input" name="keyword" placeholder="Search for products...">
+                                    <div class="custom_dropdown" style="display: none;">
+                                        <div class="custom_dropdown_list">
+                                            <span class="custom_dropdown_placeholder clc"></span> <i class="fas fa-chevron-down"></i>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="header_search_button trans_300"
+                                            value="Submit">
+                                        <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918770/search.png"
+                                             alt="">
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+  
+            </div>
+
+            <nav style="margin-top: 20px;" class=" main_nav">
+                <div class="container">
+                    <div class="row">
+                         <img style="width:100%; height: 50%;" src="https://insieutoc.vn/wp-content/uploads/2021/02/mau-banner-quang-cao-khuyen-mai.jpg" alt="">
+                    </div>
+                </div>
+            </nav>
+        </div>
+       
+        <br>
+</header>
+
+<body>
+
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+</body>
+
+<footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <div class="footer">
+    <div class="FTInfor">
+    <div class="aboutus">
+    <h3>About us</h3>
+    <p>
+    Selling books is just a job for our passion. Therefore, this DTD book store was born to make it easier for people to access humanity.
+    <br>
+    We hope the buyer support us
+    <br>
+
+    </p>
+    </div>
+   
+    <div class="information">
+    <h3>Follow US </h3>
+    <ul>
+    <li><a href="https://www.facebook.com/profile.php?id=100006463720664">Dat</a></li>
+    <li><a href="https://www.facebook.com/dzungtr24">Dzung</a></li>
+    <li><a href="https://www.facebook.com/truogyaa">Truong</a></li>
+    </ul>
+    </div>
+    <div class="support">
+        <h3>Store Address </h3>
+        <div class="maps">
+            <iframe style="height: 300px; width: 100%" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462561.6574537445!2d55.22748795!3d25.076022449999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43348a67e24b%3A0xff45e502e1ceb7e2!2sBurj%20Khalifa!5e0!3m2!1svi!2s!4v1671612365576!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+     </div>
+
+    <div class="support">
+        <div class="maps">
+           <img style="height: 100px; width: " src="https://salavietnam.vn/dataimages/images/20150827110756-dadangky.png" alt="">
+    </div>
+        
+    </div>
+    </div>
+    </div>
+
+
+    @*<div class="container">
+        
+    </div>*@
+    @RenderSection("Scripts", required: false)
+</footer>
+</html>

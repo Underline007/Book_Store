@@ -1,0 +1,168 @@
+﻿@model List<StoreOwner>
+@if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+{
+<html>
+    <header>
+        <style>
+            
+          
+
+        </style>
+    </header>
+    <body>
+
+
+        <div class="topnav">
+
+  <div class="search-container">
+    <form asp-controller="Admin" asp-action="Search" class="header_search_form clearfix" method="POST">
+      <input type="text" placeholder="Search.." name="search">
+    </form>
+  </div>
+    <br>
+    <br>
+            <h1 style="color: black" class="text text-center">List of Store Owner Information</h1>
+    <br />
+
+    <table class="table text-center table-striped table-hover">
+        <thead style="background-color: antiquewhite">
+            <tr>
+                <th> No</th>
+                <th> Name</th>
+                <th> Phone</th>
+                <th> Avatar</th>
+                <th>Action</th>
+                
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var s in Model)
+            {
+                <tr>
+                    <td>@(Model.IndexOf(s)+1)</td>
+                    <td>@s.SName</td>
+                    <td>@s.SPhone</td>
+                    <td>
+                        <a asp-controller="Admin" asp-action="DetailStoreOwner" asp-route-id="@s.Id">
+                            <img src="@s.SPicture" width="100" height="100" />
+                        </a>
+                    </td>
+                    <td>
+                        <a class="" asp-controller="Admin" asp-action="EditStoreOwner" asp-route-id="@s.Id">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-pencil-square" style="color:deepskyblue" viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                            </svg>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="" asp-controller="Admin" asp-action="DeleteStoreOwner" asp-route-id="@s.Id"
+                   onclick="return confirm('Are you sure to delete this account?');">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash" style="color:red" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                            </svg>                           
+                        </a>
+                    <td>
+                    
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+   </body>
+</html>
+}
+else {
+    <html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.button-27 {
+  appearance: none;
+  background-color: #000000;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 20%;
+  will-change: transform;
+}
+
+.button-27:disabled {
+  pointer-events: none;
+}
+
+.button-27:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.button-27:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<h1>Alert Messages</h1>
+
+<p>Click on the "x" symbol to close the alert message.</p>
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <strong>Danger!</strong> <h2>You have no access to this section.</h2>
+  </div>
+  <div>
+  <br>
+  <a asp-controller="Book" asp-action=""><button class="button-27" role="button">Back To Home</button></a>
+  </div>
+
+</body>
+</html>
+}
+
+

@@ -1,0 +1,135 @@
+﻿@model Book_Store.Models.StoreOwner
+@if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+{ 
+
+<head>
+    <style>
+        input[type=text] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 2px solid #58257b;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <form style="color: black" method="post" asp-controller="Admin" asp-action="AddStoreOwner">
+    <h2 class="cangiua gachchan text-center">Add StoreOwner Account</h2>
+    
+        <input class="form-control" asp-for="@Model.Id" hidden />
+
+    <div class="form-group">
+        <label class="h4 text-success">Full Name</label>
+        <input class="form-control" asp-for="@Model.SName" />
+        <span class="text-danger" asp-validation-for="@Model.SName"></span>
+    </div>
+        <div class="form-group">
+        <label class="h4 text-success" asp-for="@Model.SGender">Gender</label><br />
+        Female <input type="radio" name="SGender" value='F' />
+        Male <input type="radio" name="SGender" value='M' />
+        Other <input type="radio" name="SGender" value='O' />
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success" asp-for="@Model.SPhone">StoreOwner's Phone</label>
+        <input class="form-control" asp-for="@Model.SPhone" />
+        <span class="text-danger" asp-validation-for="@Model.SPhone"></span>
+    </div> 
+    <div class="form-group">
+        <label class="h4 text-success" asp-for="@Model.SPicture"> Avatar</label><br>
+        <input class="form-control mt-3" asp-for="@Model.SPicture" />
+        <span class="text-danger" asp-validation-for="@Model.SPicture"></span>
+    </div>
+    <div class="form-group">        
+        <input type="submit" class="btn btn-warning" value="Add" />
+    </div>
+</form>
+</body>
+
+} else {
+    <html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.button-27 {
+  appearance: none;
+  background-color: #000000;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 20%;
+  will-change: transform;
+}
+
+.button-27:disabled {
+  pointer-events: none;
+}
+
+.button-27:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.button-27:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<h1>Alert Messages</h1>
+
+<p>Click on the "x" symbol to close the alert message.</p>
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <strong>Danger!</strong> <h2>You have no access to this section.</h2>
+  </div>
+  <div>
+  <br>
+  <a asp-controller="Book" asp-action=""><button class="button-27" role="button">Back To Home</button></a>
+  </div>
+
+</body>
+</html>
+}

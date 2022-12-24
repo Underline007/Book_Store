@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-Book_Store-595DF1F3-36D2-4CD7-87C1-D996C674A073</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20221222015127_data.cs" />
+    <Compile Remove="Data\Migrations\20221222015127_data.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Identity\Pages\_ViewStart.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.24" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.24" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.24" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.24" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.24" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
+  </ItemGroup>
+
+</Project>

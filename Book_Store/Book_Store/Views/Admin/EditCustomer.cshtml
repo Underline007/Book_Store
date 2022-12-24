@@ -1,0 +1,188 @@
+﻿@model Book_Store.Models.Customer
+@if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+{
+
+<form method="post" asp-controller="Admin" asp-action="EditCustomer">
+    <h2 class="cangiua gachchan text-center">Edit Customer's Information</h2>
+        <input class="form-control" asp-for="@Model.Id" hidden />
+    <div class="form-group">
+        <label class="h4 text-success">Full Name</label>
+        <input class="form-control" asp-for="@Model.CName" />
+        <span class="text-danger" asp-validation-for="@Model.CName"></span>
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success" asp-for="@Model.CEmail">Customer's Email</label>
+        <input class="form-control" asp-for="@Model.CEmail" />
+        <span class="text-danger" asp-validation-for="@Model.CEmail"></span>
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success" asp-for="@Model.CPhoneNumber">Customer's Phone</label>
+        <input class="form-control" asp-for="@Model.CPhoneNumber" />
+        <span class="text-danger" asp-validation-for="@Model.CPhoneNumber"></span>
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success" asp-for="@Model.CBirthday">Date of Birth</label>
+        <input class="form-control" asp-for="@Model.CBirthday" />
+        <span class="text-danger" asp-validation-for="@Model.CBirthday"></span>
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success" asp-for="@Model.CAddress">Customer's Address</label>
+        <input class="form-control" asp-for="@Model.CAddress" />
+        <span class="text-danger" asp-validation-for="@Model.CAddress"></span>
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success" asp-for="@Model.CGender">Customer's Gender</label><br />
+        @if (Model.CGender == 'M')
+        {
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="CGender" value='M' checked>
+                <label class="form-check-label"> Male </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="CGender" value='F'>
+                <label class="form-check-label"> Female</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="CGender" value='O'>
+                <label class="form-check-label" > Other </label>
+            </div>            
+        }
+        else if(Model.CGender == 'F')
+        {
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="CGender" value='M'  >
+                <label class="form-check-label" > Male </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="CGender" value='F'  checked>
+                <label class="form-check-label"> Female </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="CGender" value='O' >
+                <label class="form-check-label" > Other </label>
+            </div>
+        }
+        else
+        {
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="CGender" value='M' >
+                <label class="form-check-label" > Male</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="CGender" value='F' >
+                <label class="form-check-label"> Female</label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="CGender" value='O'  checked>
+                <label class="form-check-label" >Other </label>
+            </div>
+        }
+        <span class="text-danger" asp-validation-for="@Model.CGender"></span>
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success" asp-for="@Model.CPicture">Customer's Picture</label><br>
+        <img src="@Model.CPicture" width="80" height="80" /><br />
+        <input class="form-control mt-3" asp-for="@Model.CPicture" />
+        <span class="text-danger" asp-validation-for="@Model.CPicture"></span>
+    </div>
+    
+    <div class="form-group">
+        <a class="btn btn-success" asp-controller="Admin" asp-action="Customer">
+            Back
+        </a>
+        <input type="submit" class="btn btn-warning" value="Edit" />       
+    </div>
+</form>
+
+
+}
+
+else {
+    <html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.button-27 {
+  appearance: none;
+  background-color: #000000;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 20%;
+  will-change: transform;
+}
+
+.button-27:disabled {
+  pointer-events: none;
+}
+
+.button-27:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.button-27:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<h1>Alert Messages</h1>
+
+<p>Click on the "x" symbol to close the alert message.</p>
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <strong>Danger!</strong> <h2>You have no access to this section.</h2>
+  </div>
+  <div>
+  <br>
+  <a asp-controller="Book" asp-action=""><button class="button-27" role="button">Back To Home</button></a>
+  </div>
+
+</body>
+</html>
+}
+
