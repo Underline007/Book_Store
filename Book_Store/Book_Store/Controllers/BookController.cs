@@ -83,6 +83,13 @@ namespace Book_Store.Controllers
             }
 
         }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var categories = context.Categories.ToList();
+            ViewBag.Categories = categories;
+            return View(context.Books.Find(id));
+        }
 
         //edit book by store owner
         [HttpPost]

@@ -100,7 +100,27 @@ namespace Book_Store.Controllers
            
         }
 
-        
+
+        public IActionResult AddStoreOwner()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddStoreOwner(StoreOwner storeOwner)
+        {
+            if (ModelState.IsValid)
+            {
+                context.StoreOwners.Add(storeOwner);
+                context.SaveChanges();
+                return RedirectToAction(nameof(storeOwner));
+            }
+            else
+            {
+                return RedirectToAction("AddStoreOwner");
+            }
+        }
+
+
         public IActionResult Delete(int? id)
         {
             var book = context.Books.Find(id);
@@ -117,8 +137,10 @@ namespace Book_Store.Controllers
         }
 
 
-        //Store owner action
-        public IActionResult StoreOwner()
+
+       
+            //Store owner action
+            public IActionResult StoreOwner()
         {
             return View(context.StoreOwners.ToList());
         }
@@ -134,26 +156,9 @@ namespace Book_Store.Controllers
         }
 
 
-        [HttpGet]
-        public IActionResult AddStoreOwner()
-        {
-            return View();
-        }
 
-        [HttpPost]
-        public IActionResult AddStoreOwner(StoreOwner storeOwner)
-        {
-            if (ModelState.IsValid)
-            {
-                context.StoreOwners.Add(storeOwner);
-                context.SaveChanges();
-                return RedirectToAction(nameof(StoreOwner));
-            }
-            else
-            {
-                return RedirectToAction("AddStoreOwner");
-            }
-        }
+        
+        
 
         public IActionResult DetailStoreOwner(int? id)
         {

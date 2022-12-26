@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZZeLdyg9EjJoLVYuVFBkdronJbIioEB0rP8S9anYnBps1K9uyTEba3WgA15dRZHGQxIr7p+Q0uzIOE8Z+KyW8w==",
+  "dgSpecHash": "rrddhF+7DNk4M2yhI6FhpYCJwOt2gfohpau2dDHbmQdTapqUmnFkQ18C1YW+0GOfVJc7QttLQJume6JeXCo17Q==",
   "success": true,
-  "projectFilePath": "D:\\GitCode\\GCH0908-1670\\GCH0908-1670\\Book_Store\\Book_Store\\Book_Store.csproj",
+  "projectFilePath": "D:\\Data Cloud\\OneDrive - PITVN Community\\SourceCode\\Apli-Dev\\Book_Store\\Book_Store\\Book_Store.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.24\\microsoft.aspnetcore.cryptography.internal.3.1.24.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.24\\microsoft.aspnetcore.cryptography.keyderivation.3.1.24.nupkg.sha512",

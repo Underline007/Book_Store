@@ -1,6 +1,5 @@
 ﻿@model Book_Store.Models.StoreOwner
-@if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
-{ 
+
 
 <head>
     <style>
@@ -14,9 +13,13 @@
         }
     </style>
 </head>
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+{ 
 <body>
     <form style="color: black" method="post" asp-controller="Admin" asp-action="AddStoreOwner">
     <h2 class="cangiua gachchan text-center">Add StoreOwner Account</h2>
+    
     <div class="form-group">
         <label class="h4 text-success">Full Name</label>
         <input class="form-control" asp-for="@Model.SName" />

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitCode\\GCH0908-1670\\GCH0908-1670\\Book_Store\\Book_Store\\Book_Store.csproj": {}
+    "D:\\Data Cloud\\OneDrive - PITVN Community\\SourceCode\\Apli-Dev\\Book_Store\\Book_Store\\Book_Store.csproj": {}
   },
   "projects": {
-    "D:\\GitCode\\GCH0908-1670\\GCH0908-1670\\Book_Store\\Book_Store\\Book_Store.csproj": {
+    "D:\\Data Cloud\\OneDrive - PITVN Community\\SourceCode\\Apli-Dev\\Book_Store\\Book_Store\\Book_Store.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitCode\\GCH0908-1670\\GCH0908-1670\\Book_Store\\Book_Store\\Book_Store.csproj",
+        "projectUniqueName": "D:\\Data Cloud\\OneDrive - PITVN Community\\SourceCode\\Apli-Dev\\Book_Store\\Book_Store\\Book_Store.csproj",
         "projectName": "Book_Store",
-        "projectPath": "D:\\GitCode\\GCH0908-1670\\GCH0908-1670\\Book_Store\\Book_Store\\Book_Store.csproj",
+        "projectPath": "D:\\Data Cloud\\OneDrive - PITVN Community\\SourceCode\\Apli-Dev\\Book_Store\\Book_Store\\Book_Store.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\GitCode\\GCH0908-1670\\GCH0908-1670\\Book_Store\\Book_Store\\obj\\",
+        "outputPath": "D:\\Data Cloud\\OneDrive - PITVN Community\\SourceCode\\Apli-Dev\\Book_Store\\Book_Store\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
